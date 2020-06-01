@@ -1,0 +1,55 @@
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+ 
+ //the logic is that two values in a tree are cousin if they are at same level and have different parent
+ //we will perform dfs for first value store it's depth and parent in  a vector
+ //same for second value
+ //then check if they have same level and diff parent return true else false
+ 
+class Solution {
+public:
+    
+  
+    
+    vector<int> dfs(TreeNode* root,int target,int depth,int parent)
+    {
+        if(root==NULL)
+            return {};
+        
+        if(root->val==target)
+        {
+            return {depth,parent};
+        }
+        else
+        {
+            parent = root->val;
+            vector<int> l = dfs(root->left,target,depth+1,parent);
+            vector<int> r = dfs(root->right,target,depth+1,parent);
+            
+            if(l.empty())
+                return r;
+            else
+                return l;
+        }
+        
+    }
+    
+    bool isCousins(TreeNode* root, int x, int y) {
+        vector<int> d1 = dfs(root,x,0,-1);
+        vector<int> d2 = dfs(root,y,0,-1);
+        
+        if(d1[0]==d2[0] && (d1[1]!=d2[1]))
+            return true;
+        else
+            return false;
+    }
+};

@@ -1,0 +1,28 @@
+//logic is to store every character of jwel string in a set 
+//than check whether the elemnt in set is present in stone sring 
+//if yes than icrement count
+
+class Solution {
+public:
+    int numJewelsInStones(string J, string S) {
+       
+        unordered_set<char>buffer;   //to store all character of jwel
+        
+        for(auto x:J)  
+        {
+            buffer.insert(x);            //insert all chracters of jwel in buffer
+        }
+        
+        int c=0;                      //to store jwel character present in stone string
+        for(auto x : S)
+        {
+            if(buffer.find(x)!=buffer.end())   //now find if the stone char is in buffer which has jwel characters
+            {
+                c++;                               //if has than increment c 
+            } 
+        }
+        
+        return c;       //the count of character of jwel string present in stone string gives 
+                       //nothing but number of stones which are jwel :)
+    }
+};

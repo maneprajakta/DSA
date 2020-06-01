@@ -1,0 +1,35 @@
+//the logic is to use a window equal to length of string whoes anagram are to found in another ie. p
+//if p length is greater than s than return it's not possible to have anagram
+//than make two buffer two store freq of character in both string 
+//check if both buffer are equal than push_back index
+
+
+class Solution {
+public:
+    vector<int> findAnagrams(string s, string p) {
+        
+        vector<int>fp(26,0),fs(26,0),fans;
+        
+        int n =p.size();
+        int m =s.size();
+        
+        if(n>m)                            //if length of p> length of s return
+            return fans;
+        for(int i=0;i<n;i++)                //visit all characters of p and incr the fre in both fs and fp
+        { 
+            fp[p[i]-'a']++;
+            fs[s[i]-'a']++;
+        }
+        if(fs==fp)                          //if equal than add 0 in vector 
+            fans.push_back(0);
+        
+        for(int i=n;i<m;i++)                      //now we will use window of size n increase freq of new char added 
+        {
+            fs[s[i]-'a']++;
+            fs[s[i-n]-'a']--;                      //dec freq of character which left window 
+              if(fs==fp)
+                  fans.push_back(i-n+1);           //check if both  are equal if than push_back index
+        }
+        return fans;
+    }
+};

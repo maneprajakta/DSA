@@ -1,0 +1,24 @@
+class Solution {
+public:
+    bool canConstruct(string ransomNote, string magazine) {
+        
+        //in simple words we need to find whether ransome string can be made from magazine string characters
+        
+       int a[26]={0};      //array to store freq of each char in magzine
+        
+        for(auto c : magzine)
+        {
+            a[c-'a']++;
+        }
+              
+        for(auto c : ransomNote )
+        {
+               a[c-'a']--;             //for each char of ransomnote decrease frequency or count of char in string                                            //magzine 
+            if(a[c-'a'] < 0)            //if less than 0 than not possible
+                return false;
+            
+        }
+        return true;
+        
+    }
+};

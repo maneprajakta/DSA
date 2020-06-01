@@ -1,0 +1,24 @@
+class Solution {
+public:
+    int majorityElement(vector<int>& nums) {
+        
+        int mjorelement ;
+        unordered_map<int,int>mp;  //to store frquency of occurence of each element 
+        
+        for(int i=0;i<nums.size();i++)
+        {
+            mp[nums[i]]++;     //it will map every element in array withs it's frequency
+        }
+        
+        for(auto i : mp )
+        {
+            if( i.second >floor(nums.size()/2))   //check if frequecy > [n/2]
+            {
+                mjorelement = i.first;                 
+                break;
+            }
+        }
+        
+        return mjorelement;
+    }
+};

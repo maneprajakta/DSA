@@ -1,0 +1,31 @@
+//the logic is to find totalsum of array
+// min and max sum using kaden's algorithm
+//if max_sum>0
+//then return max(max_sum,total_sum-min_sum)
+//if negative than max  sum
+
+
+class Solution {
+public:
+    int maxSubarraySumCircular(vector<int>& A) {
+        int total_sum =0;            //for total sum of array
+        int max_curr =0;
+        int min_curr=0;
+        int max_sofar = INT_MIN;
+        int min_sofar =INT_MAX;
+        
+        
+        for(int x:A)
+        {
+            total_sum+=x;
+            max_curr = max(max_curr+x,x);
+            max_sofar=max(max_curr,max_sofar);
+            min_curr = min(min_curr+x,x);
+            min_sofar=min(min_curr,min_sofar);
+        }
+        if(max_sofar>0)
+            return max(max_sofar,total_sum-min_sofar);
+        return max_sofar;
+        
+    }
+};

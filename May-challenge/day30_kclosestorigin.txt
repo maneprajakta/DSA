@@ -1,0 +1,27 @@
+/*as we have to find the distance of the point from the origin and return k smallest distance point*/
+
+/*so,we will use multimap because it will allow us to store the distance d of point and index i
+and also we will use distance as key .By default insert operation on multimap arranges the map in increasing order of key that is distance in this case .
+thus we have a map with distance in increasing order along with index we will simply take out k entries from it and insert in vector
+*/
+
+
+
+class Solution {
+public:
+         vector<vector<int>> kClosest(vector<vector<int>> &p, int k) {
+         
+         multimap<int,int> mp;
+            
+         for(int i=0; i<p.size();i++)
+         mp.insert({p[i][0]*p[i][0]+p[i][1]*p[i][1],i});
+            
+         vector<vector<int>>v;
+         for(auto it=mp.begin();k>0;it++,k--) 
+         v.push_back(p[it->second]);
+         return v;
+        
+    }
+};
+
+

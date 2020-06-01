@@ -1,0 +1,26 @@
+class Solution {
+public:
+    int findJudge(int N, vector<vector<int>>& trust) {
+        
+        vector<pair<int,int>>mp(N+1,{0,0});    //every pair represents a individual person
+                                    
+        
+        for(int i=0;i<trust.size();i++)
+        {
+            mp[trust[i][0]].first--;         //if person trust other decrement its's first 
+            mp[trust[i][1]].second++;        //No. of person who trust that person 
+            
+        }
+        for(int i=1;i<N+1;i++)
+        {
+            if((mp[i].first==0)&&(mp[i].second==N-1))
+            {
+                return i;     //if the person not trust anyone and everyone support the person return i
+            }
+        }
+        
+        
+        return -1;
+       
+    }
+};

@@ -1,0 +1,37 @@
+/* We will use the property of bst that every value to the left of root is saller than root value and every value to the right of root is greater than root*/
+
+
+
+TreeNode* createTree(TreeNode*root,int x)
+{
+    if(root==NULL)
+        root = new TreeNode(x);
+    
+    else{
+        if(x>root->val)
+           root->right= createTree(root->right,x);
+        if(x<root->val)
+            root->left=createTree(root->left,x);
+    }
+    
+return root;
+}      
+
+
+class Solution {
+public:
+    TreeNode* bstFromPreorder(vector<int>& preorder) {
+        
+        TreeNode*root = NULL;
+       
+    if(!preorder.empty())
+    {
+        for(auto x:preorder)
+        {
+               root = createTree(root,x);
+        }
+        
+    }
+        return root;
+}
+};

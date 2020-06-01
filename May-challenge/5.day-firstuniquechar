@@ -1,0 +1,24 @@
+class Solution {
+public:
+    int firstUniqChar(string s) {
+        
+        int ar[26]={0};
+        
+        for(int i=0;i<s.length();i++)
+        {
+            ++ar[s[i]-'a'];  //store frequency of occurence of every character 
+        }
+        
+        int index=-1;
+        
+        for(int i=0;i<s.length();i++)
+        {
+            if(ar[s[i]-'a']==1)
+            {
+                index=i;  // check if frequecy is one break loop return index
+                break;
+            }
+        }
+        return index;
+    }
+};

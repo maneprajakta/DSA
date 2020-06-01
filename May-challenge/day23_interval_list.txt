@@ -1,0 +1,33 @@
+/* it's a normal math's problem
+we will compare the starting element of both interval and find max of them why max because we need to find common interval
+the inteval will end at minimum of second value of both internl range this gives  us a common interval push it in a vector
+now check wheter the point where first interval ended is less than second interval if yess than increment first interval pointer else second
+*/
+
+
+
+
+class Solution {
+public:
+    vector<vector<int>> intervalIntersection(vector<vector<int>>& A, vector<vector<int>>& B) {
+
+vector<pair<int,int>>mp;
+
+int i=0,j=0;
+
+while(i<A.size() && j<B.size())
+{
+   int  l = max(A[i][0],B[j][0]);
+   int  u = min(A[i][1],B[j][1]);
+   
+   if(l<=u)
+   { mp.push_back({l,u});
+   }
+  if(A[i][1]<B[j][1])
+     i++;
+   else j++;
+}
+
+return mp;
+}
+   

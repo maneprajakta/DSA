@@ -1,0 +1,19 @@
+class Solution {
+public:
+    bool isPerfectSquare(int num) {
+        long long int sum=0;
+                                              //logic is that addition of n odd number is always a even number
+                                              
+    
+        for(int i=1;sum<num;i=i+2)            //start from 1 till sum of numbers is equal to  num as we are increment for loop 
+        {  sum=sum+i;                         //by two it will be log(n) time complexity
+          if(sum==num)                        //if sum==num     return true 
+          {
+              return true;
+          }
+           
+        }
+         
+        return false;                       //else false 
+    }
+};

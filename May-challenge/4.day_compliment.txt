@@ -1,0 +1,16 @@
+class Solution {
+public:
+      //logic is that xor of a every bit of a number with 1 gives compliment of that number
+     
+    
+      int findComplement(int num) {
+        
+      int no_of_bits=log2(num)+1;  //it gives the number of bits in num
+        
+      int mask = (unsigned)(1<<no_of_bits)-1; //now we need to find mask
+                                              //shift 1  by n_of_bits in num than subtract 1
+                                             //this result in all set bit mask number xoer with which give compliment
+          
+      return mask^num;  
+    }
+};

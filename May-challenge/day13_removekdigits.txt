@@ -1,0 +1,45 @@
+
+//first check whether k is greater than equal to n.if yes than return "0";
+
+//otherwise
+//the logic is to start from left compare current number with it's adjacent
+//if adjacent  is less , than erase the  current number and  decrement k
+//else increment i till curr element is greater than adj element
+//this happens till k >0
+//at last check for zeroes at begining and erase them
+//return num
+
+
+class Solution {
+public:
+    string removeKdigits(string num, int k) {
+        
+        int i=0;
+        
+        //check for k greater than number
+        
+        if(k>=num.length())
+        { return "0";}
+    
+        
+        while(k>0)
+        {
+            i = (i>0) ? (i-1) : i ;
+            
+            while(i<num.length()-1 && num[i]<=num[i+1])
+                   i++;
+            
+            num.erase(num.begin()+i);
+            k--;
+        }
+        
+        num.erase(0,num.find_first_not_of("0"));  //it finds first occurence of non-zero digit
+        
+      if(num.length()==0)
+      {
+          return "0";
+      }
+        return num;
+        
+    }
+};

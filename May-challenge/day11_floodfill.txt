@@ -1,0 +1,25 @@
+//the logic is to check whether the current color of cell is same as new color if not than change the color if yes than 
+no nedd to change the color 
+//we can go from a cell only in it's four direction 
+
+class Solution {
+public:
+    vector<vector<int>> floodFill(vector<vector<int>>& image, int sr, int sc, int newColor)    
+    {
+        DFS(image, sr, sc, newColor, image[sr][sc]);            //image[sr][sc]=current color of cell
+        return image;
+    }
+    
+    void DFS(vector<vector<int>>& image, int row, int col, int newColor, int oldColor)
+    {    //condition to check we are not going outside the image and the cell color is already new color than return
+        if(row < 0 || col < 0 || row >= image.size() || col >= image[0].size() || image[row][col]==newColor)
+            return ;
+        if(image[row][col] == oldColor){
+            image[row][col] = newColor;
+            DFS(image, row - 1, col, newColor, oldColor);
+            DFS(image, row + 1, col, newColor, oldColor);
+            DFS(image, row, col - 1, newColor, oldColor);
+            DFS(image, row, col + 1, newColor, oldColor);
+        }
+    }
+};

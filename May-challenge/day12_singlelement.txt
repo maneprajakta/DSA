@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int singleNonDuplicate(vector<int>& nums) {
+       
+        
+        //the logic is that we will compare  a element with it's adjacent element
+        //if not same than return that elment 
+        //otherwise last element is the elment occuring once.
+        
+           
+        for(int i=0;i<nums.size()-1;i=i+2 )  //icrement i by 2 so we have log(n) time complexity
+        {
+            if(nums[i]!=nums[i+1])    
+            {
+                return nums[i];
+            }
+        }
+        return nums[nums.size()-1];
+        
+    }
+};

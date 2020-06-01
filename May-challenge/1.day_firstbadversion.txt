@@ -1,0 +1,25 @@
+// The API isBadVersion is defined for you.
+// bool isBadVersion(int version);
+
+class Solution {
+public:
+    int firstBadVersion(int n) {                          //logic is that we need to find the first bad version and through
+        
+        int begin=1;                                      //binary search it can be done in minimum time
+        int last=n;
+        int mid=(begin + (last-begin)/2);
+        while(begin<last)
+        {
+            if(isBadVersion(mid))                         //if mid is badversion than it is possible before that there might be 
+            {                                            //another bad version who started this   
+                last=mid-1;                               //so change last to mid-1       
+            }
+            else{
+                begin=mid+1;                                 //if before  mid no badversion than change begin to mid+1
+                                                             //after that only we can have bad_version
+            }
+            mid = (begin + (last-begin)/2);                   //change mid 
+        }
+        return isBadVersion(begin) ? begin:begin+1;
+    }
+};

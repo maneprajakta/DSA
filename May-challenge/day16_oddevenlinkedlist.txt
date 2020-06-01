@@ -1,0 +1,36 @@
+//the logic is to first delete the nodes at even position
+//store the val of deleted node in vector
+//than insert the val from vector at end of linked-list
+class Solution {
+public:
+    ListNode* oddEvenList(ListNode* head) {
+     
+        if(head==NULL)
+            return head;
+        
+        vector<int>v;
+        ListNode*temp=head; 
+        
+        while(temp!=NULL)          //deleting all node at even position and store in v vector
+        {   if(temp->next!=NULL)
+            {  ListNode*p =temp->next;
+               temp->next=p->next;
+               v.push_back(p->val);
+               delete(p);
+            }
+           temp=temp->next;
+        }
+        ListNode*q=head;
+        while(q->next!=NULL)
+        {
+            q=q->next;               //move pointer to end of current linked-list
+        }
+        for(int i=0;i<v.size();i++) 
+        {   ListNode*s =new ListNode(v[i]);
+            q->next=s;                           //insert the val from vector to linked-list
+            q=q->next;
+        }
+        
+        return head;
+    }
+};

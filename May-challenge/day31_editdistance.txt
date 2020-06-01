@@ -1,0 +1,46 @@
+/*the idea is to use dp
+
+1.If first string is empty than we have to insert all characters of second string to make them equal.
+2.if second string is empty than remove all characters of first string.
+3.if last character is same than igonre it and recur for remaining character.
+4.if last character is different consider all possiblities find min of insert ,remove,replace
+*/
+
+class Solution {
+public:        
+    int min1(int x, int y, int z) 
+{ 
+    return min(min(x, y), z); 
+} 
+  
+int minDistance(string word1, string word2)
+{   int m=word1.size();
+    int n = word2.size();
+    
+    int dp[m + 1][n + 1]; 
+  
+    
+    for (int i = 0; i <= m; i++) { 
+        for (int j = 0; j <= n; j++) { 
+            
+            if (i == 0) 
+                dp[i][j] = j; // Min. operations = j 
+  
+         
+            else if (j == 0) 
+                dp[i][j] = i; // Min. operations = i 
+  
+          
+            else if (word1[i - 1] == word2[j - 1]) 
+                dp[i][j] = dp[i - 1][j - 1]; 
+  
+            else
+                dp[i][j] = 1 + min1(dp[i][j - 1], // Insert 
+                                   dp[i - 1][j], // Remove 
+                                   dp[i - 1][j - 1]); // Replace 
+        } 
+    } 
+  
+    return dp[m][n]; 
+} 
+};

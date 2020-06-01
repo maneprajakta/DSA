@@ -1,0 +1,29 @@
+//the logic is that inorder traversal of bst display's the value of bst in increasing order
+//we will use that 
+//we will decrement the value of k whenever a node of tree is visited 
+//when it bocomes 0 return the value of node
+ 
+class Solution {
+public:
+    int n,ans;
+    int inordertraversal(TreeNode* root)
+    {   
+         if(root)
+         {  
+             if(root->left)
+                 inordertraversal(root->left);
+             if(--n==0)
+                 ans = root->val;
+             if(root->right)
+                 inordertraversal(root->right);
+         }
+        
+       return ans;
+    }
+    
+    int kthSmallest(TreeNode* root, int k) {
+         n=k;
+         inordertraversal(root);
+         return ans;
+      }
+};

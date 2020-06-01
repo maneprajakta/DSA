@@ -1,0 +1,32 @@
+//we need to find the length of continuous array starting from back whoes value where less than or equal to price of today
+// we will keep a vector to store price 
+//from back of vector we will fing count of elements in decreasing order of price value
+class StockSpanner {
+public:
+    vector<int>v;
+    StockSpanner() {
+        
+    }
+    
+    int next(int price) {
+        v.push_back(price);
+        int m=v.size()-1;
+        int c=0;
+       while(price>=v[m])
+      {
+             c++;                   //counter incremented 
+             m--;                   //decrement size
+           if(m==-1)
+           {
+               break;
+           }
+      }
+       return c;
+    }
+};
+
+/**
+ * Your StockSpanner object will be instantiated and called as such:
+ * StockSpanner* obj = new StockSpanner();
+ * int param_1 = obj->next(price);
+ */

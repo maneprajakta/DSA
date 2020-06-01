@@ -1,0 +1,49 @@
+//we will use dynamic programming
+// create a matrix dp with same dimension of matrix
+//initialise 1st row of mp with 1st row matrix
+//initialise 1st col of mp with 1st col matrix
+//the a[0][0] element visited twice is subtracted
+//then for remaining find minimum of left,top,diagonal +1
+//add it to ans  variable which finally gives us the number of square matrix will all one
+
+class Solution {
+public:
+    int countSquares(vector<vector<int>>& matrix) {
+     
+        int n = matrix.size();
+        int m = matrix[0].size();
+        
+        int dp[n][m];
+        int ans =0 ;
+        
+        for(int i=0;i<n;i++)                   //initialise col
+        {
+            dp[i][0]=matrix[i][0];              
+            ans += dp[i][0];                        //count of matrix with all one
+            
+        }
+        
+        for(int i=0;i<m;i++)
+        {
+            dp[0][i]=matrix[0][i];        //initialise row
+            ans += dp[0][i];                 //count of matrix with all one
+        }
+        
+        ans=ans-dp[0][0];
+        
+        for(int i=1;i<n;i++)
+        {
+            for(int j=1;j<m;j++)
+            {   
+                 if(matrix[i][j]==1)
+                 { dp[i][j] = 1+ min({dp[i-1][j-1],dp[i][j-1],dp[i-1][j]});}   //finding minimum and adding 1
+                else{  
+                    dp[i][j]=0;
+                }
+                ans+=dp[i][j];
+            }
+        }
+        return ans;
+        
+    }
+};

@@ -1,0 +1,26 @@
+class Solution {
+public:
+    bool checkStraightLine(vector<vector<int>>& coordinates) {
+        
+        if(coordinates.size() <= 2) return true; //if only two or less point are present then definately 
+                                                 //they will form line
+        
+        int x1 = coordinates[0][0];             //x1  value  
+        int y1 = coordinates[0][1];             //y1  value
+        int x2 = coordinates[1][0];             //x2 value
+        int y2 = coordinates[1][1];             //y2 value
+        
+        for(int i=2;i<coordinates.size();i++){
+            int x = coordinates[i][0];            //x
+            int y = coordinates[i][1];            //y
+            
+            //now condition pf staight line is:
+            //  (y2-y1)/(y1-y) == (x2-x1)/(x1-x) 
+            //rearrange and we get below condition of failure
+            
+            if((y2 - y1) * (x1 - x) != (y1 - y) * (x2 - x1))        
+                return false;
+        }
+        return true;
+    }
+};

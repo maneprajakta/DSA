@@ -1,0 +1,24 @@
+//the idea is to use a map to store freq of every character
+//than make a maximum heap from map
+//than pop every element from max_heap concatenate it to string and dec freq every time we add
+
+class Solution {
+public:
+    string frequencySort( string s ) {
+	unordered_map<char, int> mp;
+	for( auto c : s )
+		++mp[c];
+
+	priority_queue<pair<int, char>> maxHeap;
+	for( auto p : m )
+		maxHeap.push( { p.second, p.first } );
+
+	string result = "";
+	while( !maxHeap.empty() ) {
+		auto p = maxHeap.top(); maxHeap.pop();
+		while( p.first-- )
+			result += p.second;
+	}
+	return result;
+}
+};

@@ -1,0 +1,21 @@
+/* __builtin_popcount : it's a built in function of GCC.
+
+The function prototype is as follows:
+int __builtin_popcount(unsigned int)
+
+It returns the numbers of set bits in an integer (the number of ones in the binary representation of the integer).
+
+*/
+class Solution {
+public:
+    vector<int> countBits(int num) {
+         
+        vector<int>mp;
+        
+        for(int i=0;i<=num;i++)
+        {
+             mp.push_back(__builtin_popcount(i));
+        }
+        return mp;
+    }
+};
