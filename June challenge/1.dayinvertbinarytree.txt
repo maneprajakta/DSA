@@ -1,0 +1,55 @@
+/*Invert Binary Tree
+Solution
+Invert a binary tree.
+
+Example:
+
+Input:
+
+     4
+   /   \
+  2     7
+ / \   / \
+1   3 6   9
+Output:
+
+     4
+   /   \
+  7     2
+ / \   / \
+9   6 3   1
+*/
+
+/* inverting a binary tree is simply swapping it's node ie.making left child as right and right child as left
+so,
+we will do this recursively 
+first we will swap childs of current parent than we will call the function again for it's left and right child*/
+
+
+//solution:
+
+
+class Solution {
+public:
+    TreeNode*invert(TreeNode*root)
+    {   
+         if(root==NULL)
+             return root;
+        //swap child
+        TreeNode*temp = root->left;
+        root->left=root->right;
+        root->right = temp;
+        //call again for left and right child
+        invert(root->left);
+        invert(root->right);
+        
+        return root;
+    }
+
+    TreeNode* invertTree(TreeNode* root) {
+        
+        TreeNode*head = invert(root);
+       return head; 
+    }
+};
+
