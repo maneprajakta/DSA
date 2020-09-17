@@ -1,0 +1,62 @@
+node*currn = head;
+node*nextn = null;
+node*prevn= null;
+while(curr!=null)
+{ 
+        nextn =currn->next;
+         currn->next = prev;
+         prev = currn;
+         cuurn=nextn;
+}
+
+    
+     if(head=null || head->next=null)
+     {
+            return head;                  
+     }
+     
+     /*-------------------------*/
+     
+bool detectloop(Node * head)
+{
+     Node* slow_p = head;
+     Node*fast_p = head;
+     while(slow_p && fast_p && fast_p->next )
+     { 
+           slow_p = slow_p->next;
+           fast_p = fast_p->next->next;
+           if(slow_p==fats_p)
+            return true;
+       }
+       return false;
+  }    
+           
+      /* ---------------------------*/
+  
+int intersection(Node* head1 ,Node* head2)
+{
+       int c1 = count(head1);
+       int c2  = count(head2);
+       
+       if(c1>c2) 
+            return utility(c1-c2,head1,head2);
+       else
+           return utility(c2-c1,head2,head1);
+ }      
+       
+ int count(node*head)
+{     node*temp = head;
+       int c1= 0;
+       while(temp!=null)
+      {
+             temp = temp->next ;
+             c1++;
+      }
+      return c1;
+ }      
+      
+       
+       
+           
+          
+     
