@@ -1,0 +1,13 @@
+cases = int(input())
+for i in range(cases):
+    n=int(input())
+    arr= [int(i) for i in input().split()]
+    speedOfPrev = arr[0]
+    ans=0
+    for i in range(n):
+        if speedOfPrev>=arr[i]:
+            ans +=1
+            speedOfPrev=arr[i]
+    print(ans)
+            
+        
