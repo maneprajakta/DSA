@@ -1,0 +1,22 @@
+t = int(input())
+for i in range(t):
+    x=str(input())
+    n=len(x)
+    if n%2==0 :
+        B = x[:n//2]
+        C = x[n//2:]
+        t=sorted(B)
+        k=sorted(C)
+        if t==k:
+            print('YES')
+        else:
+            print('NO')
+    else:
+        B = x[:n//2]
+        C = x[(n+1)//2:]
+        t=sorted(B)
+        k=sorted(C)
+        if t==k:
+            print('YES')
+        else:
+            print('NO')
