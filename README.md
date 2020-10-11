@@ -1,1 +1,1 @@
-Problems solved during Learning Data Structure and Algorithm. Also, questions solved on some coding platforms to improve problem-solving skills!
+Problems solved during Learning of Data Structures and Algorithms. Also, questions solved on some best coding platforms to improve your problem-solving and programing skills!
